@@ -2,4 +2,4 @@ project: ucc162-3
 target: myc
 
 cmds:
-  - cmd: /repo/myc/src/myc @@
+  - cmd: /myc @@
