@@ -1,0 +1,15 @@
+project: ucc162-3
+target: myc
+
+# myc is a file-input CLI: it compiles the given simplified-C source file and interprets it
+# on its bytecode VM (writes the <input>.s listing next to the staged input, which Mayhem
+# places in a writable location). Same target name + shape as the archived original
+# (`/myc @@`), rebuilt sanitized (ASan+UBSan, halting) from mayhem/build.sh.
+cmds:
+  - cmd: /mayhem/build/myc @@
+
+# The Mayhem project slug is ucc162-3 (the '.' in the repo name is slugified), so the project
+# segment is spelled out: $MAYHEM_PROJECT would expand to the raw repo name ucc162.3 and 403.
+testsuite:
+  - https://app.mayhem.security/mayhemheroes/ucc162-3/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/myc/testsuite
